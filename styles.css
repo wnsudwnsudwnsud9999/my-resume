@@ -1,0 +1,58 @@
+/* 기본 색상 토큰 */
+:root{
+  --bg:#f7f8fd; --fg:#0f172a; --muted:#6b7280; --card:#ffffff; --line:#e5e7eb; --accent:#4f46e5;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family: ui-sans-serif, system-ui, -apple-system, "Noto Sans KR", Arial, Helvetica, sans-serif;
+  background:var(--bg); color:var(--fg); line-height:1.55;
+}
+.container{
+  max-width: 980px; margin: 28px auto; padding: 20px;
+  background:var(--card); border:1px solid var(--line); border-radius:16px;
+  box-shadow:0 10px 30px rgba(0,0,0,.05);
+}
+
+/* 헤더 */
+.hero{
+  display:grid; grid-template-columns: 56px 1fr auto; gap:14px; align-items:center;
+  border-bottom:1px solid var(--line); padding-bottom:14px; margin-bottom:18px;
+}
+.avatar{
+  width:56px; height:56px; border-radius:50%; display:grid; place-items:center; background:#eef2ff; border:1px solid var(--line);
+}
+.headings h1{margin:0 0 4px;}
+.muted{color:var(--muted)}
+
+.section{margin-top:18px}
+.section h2{margin:0 0 10px}
+
+/* 폼 공통 */
+.grid{display:grid; grid-template-columns: repeat(2, 1fr); gap:10px}
+.grid .full{grid-column:1 / -1}
+label{display:flex; flex-direction:column; gap:6px; font-size:14px}
+input, textarea{
+  padding:10px 12px; border:1px solid var(--line); border-radius:10px; background:#fff;
+}
+.row{display:flex; gap:8px; align-items:center}
+
+/* 버튼 */
+.btn{padding:10px 14px; border-radius:10px; border:1px solid var(--line); background:#fff; cursor:pointer}
+.btn.primary{background:var(--accent); color:#fff; border-color:transparent}
+.btn.ghost{background:transparent}
+
+/* 칩/리스트/카드 */
+.chips{display:flex; flex-wrap:wrap; gap:8px; list-style:none; padding:0; margin:0}
+.chips li{padding:6px 10px; border:1px solid var(--line); border-radius:999px; background:#f3f4ff; cursor:pointer}
+.cards{display:grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap:10px}
+.card{border:1px solid var(--line); border-radius:12px; padding:12px; background:#fff}
+.card h3{margin:0 0 6px}
+
+.footer{margin-top:18px; padding-top:12px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center}
+
+/* 다크모드 */
+body.dark{
+  --bg:#0b1220; --fg:#e5e7eb; --muted:#9aa0a6; --card:#0f1629; --line:#1f2937; --accent:#8b5cf6;
+}
+body.dark .chips li{background:#111827}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>나의 이력서</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <main class="container">
+    <!-- 헤더/프로필 미리보기 -->
+    <header class="hero">
+      <div class="avatar" aria-hidden="true">👤</div>
+      <div class="headings">
+        <h1 id="preview-name">홍길동</h1>
+        <p id="preview-role" class="muted">컴퓨터공학 3학년 · 백엔드/풀스택 지망</p>
+        <a id="preview-email" href="mailto:example@gmail.com">example@gmail.com</a>
+      </div>
+      <button id="btn-theme" class="btn ghost" type="button" aria-label="다크모드 토글">🌙</button>
+    </header>
+
+    <!-- 소개 -->
+    <section class="section">
+      <h2>소개</h2>
+      <p id="preview-bio">
+        Node.js, MongoDB, Docker를 공부 중이며, 포트폴리오 사이트를 직접 배포하는 것을 목표로 하고 있습니다.
+      </p>
+    </section>
+
+    <!-- 프로필 편집 폼 -->
+    <section class="section">
+      <h2>내 정보 편집</h2>
+      <form id="form-profile" class="grid">
+        <label>
+          이름
+          <input id="name" placeholder="홍길동" required />
+        </label>
+        <label>
+          역할/직무
+          <input id="role" placeholder="백엔드/풀스택 지망" />
+        </label>
+        <label>
+          이메일
+          <input id="email" type="email" placeholder="me@example.com" required />
+        </label>
+        <label class="full">
+          소개
+          <textarea id="bio" rows="3" placeholder="간단한 자기소개를 적어주세요."></textarea>
+        </label>
+        <div class="row">
+          <button class="btn primary" type="submit">프로필 저장</button>
+          <button class="btn" type="button" id="btn-reset-profile">초기화</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- 스킬 -->
+    <section class="section">
+      <h2>기술 스택</h2>
+      <ul id="skills" class="chips"></ul>
+      <form id="form-skill" class="inline">
+        <input id="skill-input" placeholder="예: JavaScript" />
+        <button class="btn" type="submit">추가</button>
+      </form>
+      <small class="muted">💡 칩(스킬)을 클릭하면 삭제됩니다.</small>
+    </section>
+
+    <!-- 프로젝트 -->
+    <section class="section">
+      <h2>프로젝트</h2>
+      <form id="form-project" class="grid">
+        <label>
+          제목
+          <input id="proj-title" placeholder="프로젝트 제목" required/>
+        </label>
+        <label>
+          기간
+          <input id="proj-period" placeholder="2025.03 ~ 2025.06"/>
+        </label>
+        <label>
+          역할
+          <input id="proj-role" placeholder="백엔드 개발"/>
+        </label>
+        <label class="full">
+          요약
+          <textarea id="proj-summary" rows="2" placeholder="무엇을 만들었고 어떤 문제를 해결했는지"></textarea>
+        </label>
+        <label class="full">
+          기술(쉼표로 구분)
+          <input id="proj-stack" placeholder="Node.js, MongoDB, Docker"/>
+        </label>
+        <div class="row">
+          <button class="btn primary" type="submit">프로젝트 추가</button>
+          <button class="btn" type="button" id="btn-clear-projects">모두 삭제</button>
+        </div>
+      </form>
+
+      <div id="projects" class="cards"></div>
+    </section>
+
+    <!-- 공개용 미리보기 (나중에 /u/:username 페이지가 될 부분) -->
+    <section class="section">
+      <h2>공개 화면 미리보기</h2>
+      <article class="card">
+        <h3 id="pub-name">홍길동</h3>
+        <p id="pub-role" class="muted">백엔드/풀스택 지망</p>
+        <p id="pub-bio">간단한 자기소개</p>
+        <h4>프로젝트</h4>
+        <ul id="pub-projects"></ul>
+        <h4>기술</h4>
+        <ul id="pub-skills" class="chips"></ul>
+      </article>
+    </section>
+
+    <footer class="footer">
+      <button class="btn" id="btn-export" type="button">JSON 내보내기</button>
+      <small class="muted">저장은 브라우저 localStorage 에 이뤄집니다.</small>
+    </footer>
+  </main>
+</body>
+</html>
