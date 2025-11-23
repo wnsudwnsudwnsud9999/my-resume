@@ -5,10 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>나의 이력서</title>
   <link rel="stylesheet" href="styles.css"/>
+
+  <!-- 기존 포트폴리오 기능 -->
   <script defer src="app.js"></script>
+
+  <!-- MySQL & MongoDB fetch 기능 -->
+  <script defer src="script.js"></script>
 </head>
+
 <body>
   <main class="container">
+
     <!-- 헤더/프로필 미리보기 -->
     <header class="hero">
       <div class="avatar" aria-hidden="true">👤</div>
@@ -17,7 +24,7 @@
         <p id="preview-role" class="muted">컴퓨터공학 3학년 · 백엔드/풀스택 지망</p>
         <a id="preview-email" href="mailto:example@gmail.com">example@gmail.com</a>
       </div>
-      <button id="btn-theme" class="btn ghost" type="button" aria-label="다크모드 토글">🌙</button>
+      <button id="btn-theme" class="btn ghost" type="button">🌙</button>
     </header>
 
     <!-- 소개 -->
@@ -26,6 +33,19 @@
       <p id="preview-bio">
         Node.js, MongoDB, Docker를 공부 중이며, 포트폴리오 사이트를 직접 배포하는 것을 목표로 하고 있습니다.
       </p>
+    </section>
+
+    <!-- 🔵 (추가됨) DB에서 데이터 가져오기 -->
+    <section class="section">
+      <h2>Database 연동 테스트</h2>
+
+      <button class="btn" onclick="loadUser()">MySQL 사용자 정보 가져오기</button>
+      <pre id="mysqlResult" class="db-output"></pre>
+
+      <button class="btn" onclick="loadPortfolio()">MongoDB 포트폴리오 가져오기</button>
+      <pre id="mongoResult" class="db-output"></pre>
+      <button onclick="loadPortfolioToUI()">MongoDB → UI 연동하기</button>
+
     </section>
 
     <!-- 프로필 편집 폼 -->
@@ -99,15 +119,17 @@
       <div id="projects" class="cards"></div>
     </section>
 
-    <!-- 공개용 미리보기 (나중에 /u/:username 페이지가 될 부분) -->
+    <!-- 공개용 미리보기 -->
     <section class="section">
       <h2>공개 화면 미리보기</h2>
       <article class="card">
         <h3 id="pub-name">홍길동</h3>
         <p id="pub-role" class="muted">백엔드/풀스택 지망</p>
         <p id="pub-bio">간단한 자기소개</p>
+
         <h4>프로젝트</h4>
         <ul id="pub-projects"></ul>
+
         <h4>기술</h4>
         <ul id="pub-skills" class="chips"></ul>
       </article>
@@ -117,6 +139,7 @@
       <button class="btn" id="btn-export" type="button">JSON 내보내기</button>
       <small class="muted">저장은 브라우저 localStorage 에 이뤄집니다.</small>
     </footer>
+
   </main>
 </body>
 </html>

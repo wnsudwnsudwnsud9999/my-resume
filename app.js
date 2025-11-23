@@ -171,6 +171,11 @@ els.fProfile.addEventListener('submit', (e)=>{
   };
   saveProfile();
   renderAll();
+
+    // <<<<<< 새로 추가됨 (MySQL 업데이트) >>>>>>
+  if (window.saveUserToMySQL) {
+    window.saveUserToMySQL(profile);
+  }
 });
 
 // 프로필 초기화(기본값으로)
@@ -206,6 +211,12 @@ els.fProject.addEventListener('submit', (e)=>{
   els.fProject.reset();
   saveProjects();
   renderAll();
+
+// <<<<< MongoDB 저장 기능 추가 >>>>>
+  if (window.saveProjectToMongo) {
+    window.saveProjectToMongo(p);
+  }
+
 });
 
 // 프로젝트 전체 삭제
@@ -243,3 +254,36 @@ els.exportBtn.addEventListener('click', ()=>{
   // 렌더
   renderAll();
 })();
+
+// ===============================
+//    DB → UI 자동 업데이트 기능
+// ===============================
+window.updateProfileFromDB = function(newProfile) {
+  profile = {
+    ...profile,
+    ...newProfile
+  };
+
+  saveProfile();
+  renderAll();
+
+  alert("MySQL 사용자 정보가 UI에 자동 반영되었습니다!");
+}
+
+// =======================================
+// 📌 MongoDB → 프로젝트 UI 자동 업데이트
+// =======================================
+window.updateProjectsFromDB = function(list) {
+  projects = list.map(p => ({
+    title: p.title,
+    period: p.created_at?.slice(0, 10) || "",
+    role: p.owner,
+    summary: p.description,
+    stack: p.skills || []
+  }));
+
+  saveProjects();
+  renderAll();
+
+  alert("MongoDB 프로젝트가 UI에 반영되었습니다!");
+}
