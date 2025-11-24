@@ -13,7 +13,7 @@ async function loadUser() {
 
     console.log("MySQL 데이터 로드:", data);
 
-    // DB→app.js로 데이터 전달
+    // DB->app.js로 데이터 전달
     window.updateProfileFromDB({
       name: data.display_name,
       role: "컴퓨터공학과 학생",
@@ -47,7 +47,7 @@ async function loadPortfolio() {
 }
 
 // =============================================
-// 📌 MySQL에 프로필 정보를 저장하는 함수
+//  MySQL에 프로필 정보를 저장하는 함수
 // =============================================
 async function saveUserToMySQL(profile) {
   try {
@@ -98,7 +98,7 @@ async function loadPortfolioToUI() {
 }
 
 // =============================================
-// 📌 프로젝트를 MongoDB에 저장하는 함수
+//  프로젝트를 MongoDB에 저장하는 함수
 // =============================================
 async function saveProjectToMongo(newProject) {
   try {

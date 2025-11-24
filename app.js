@@ -172,7 +172,7 @@ els.fProfile.addEventListener('submit', (e)=>{
   saveProfile();
   renderAll();
 
-    // <<<<<< 새로 추가됨 (MySQL 업데이트) >>>>>>
+    //  MySQL 업데이트
   if (window.saveUserToMySQL) {
     window.saveUserToMySQL(profile);
   }
@@ -212,7 +212,7 @@ els.fProject.addEventListener('submit', (e)=>{
   saveProjects();
   renderAll();
 
-// <<<<< MongoDB 저장 기능 추가 >>>>>
+//  MongoDB 저장 기능 추가 
   if (window.saveProjectToMongo) {
     window.saveProjectToMongo(p);
   }
@@ -271,7 +271,7 @@ window.updateProfileFromDB = function(newProfile) {
 }
 
 // =======================================
-// 📌 MongoDB → 프로젝트 UI 자동 업데이트
+//  MongoDB → 프로젝트 UI 자동 업데이트
 // =======================================
 window.updateProjectsFromDB = function(list) {
   projects = list.map(p => ({
