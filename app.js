@@ -28,6 +28,8 @@ const els = {
   pRole: document.querySelector('#preview-role'),
   pEmail: document.querySelector('#preview-email'),
   pBio: document.querySelector('#preview-bio'),
+  photoInput: document.querySelector('#photo-input'),
+  profileImg: document.querySelector('#profile-img'),
 
   // 폼
   fProfile: document.querySelector('#form-profile'),
@@ -136,6 +138,11 @@ function renderProfilePreview(){
   els.role.value = profile.role || '';
   els.email.value = profile.email || '';
   els.bio.value   = profile.bio || '';
+
+  if (profile.image) {
+    els.profileImg.src = profile.image;
+    els.profileImg.style.display = 'block';
+  }
 }
 
 // 전체 렌더
@@ -251,6 +258,11 @@ els.exportBtn.addEventListener('click', ()=>{
   const theme = localStorage.getItem('theme') || 'light';
   document.body.classList.toggle('dark', theme === 'dark');
 
+  if (profile.image) {
+    els.profileImg.src = profile.image;
+    els.profileImg.style.display = 'block';
+  }
+
   // 렌더
   renderAll();
 })();
@@ -287,3 +299,20 @@ window.updateProjectsFromDB = function(list) {
 
   alert("MongoDB 프로젝트가 UI에 반영되었습니다!");
 }
+
+// ================= 사진 업로드 기능 추가 =================
+els.photoInput.addEventListener("change", function(e){
+  const file = e.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function(ev){
+    profile.image = ev.target.result;    // base64 저장
+    saveProfile();
+
+    els.profileImg.src = profile.image;
+    els.profileImg.style.display = 'block';
+  };
+
+  reader.readAsDataURL(file);
+});
