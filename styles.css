@@ -63,3 +63,21 @@ body.dark{
   --bg:#0b1220; --fg:#e5e7eb; --muted:#9aa0a6; --card:#0f1629; --line:#1f2937; --accent:#8b5cf6;
 }
 body.dark .chips li{background:#111827}
+
+/*  회사 로고 아이콘 영역 */
+.company-logos {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 28px;
+  padding: 24px 0 8px;
+  
+}
+
+.company-logos img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;     /* 동그라미 */
+  object-fit: contain;    /* 로고가 잘리지 않게 */
+}
+
